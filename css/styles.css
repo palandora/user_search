@@ -145,7 +145,7 @@ input[type=text]:focus {
   font-weight: 700;
 }
 
-#background_image {
+.background_image {
   z-index: 0;
   height: 100%;
 }

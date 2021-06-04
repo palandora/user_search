@@ -134,10 +134,13 @@ input[type=text]{
     }
 }
 
-#background_image{
-        z-index: 0;
-        height: 100%;
+.background_image{
+    z-index: 0;
+    height: 100%;
+    &.selected{
+
     }
+}
 
 
 
