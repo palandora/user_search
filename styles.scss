@@ -75,12 +75,7 @@ input[type=text]{
     }
 }
 
-.container_user{
-    border: 1px solid red;
-
-}
-
-.user{
+.bounds{
     position: relative;
     display: flex;
     justify-content: flex-start;
@@ -107,9 +102,6 @@ input[type=text]{
         right: 16px;
         top: 50%;
         transform: translateY(-50%);
-        path{
-            fill: rgba(255,255,255,0.8);;
-        }
     }
     &:hover{
         background: $col_accent;

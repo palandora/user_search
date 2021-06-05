@@ -73,11 +73,7 @@ input[type=text]:focus {
   content: " (2)";
 }
 
-.container_user {
-  border: 1px solid red;
-}
-
-.user {
+.bounds {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -93,21 +89,21 @@ input[type=text]:focus {
   font-weight: 400;
 }
 
-.user .user_image {
+.bounds .user_image {
   width: 24px;
 }
 
-.user .username {
+.bounds .username {
   color: #111;
   padding-left: 16px;
 }
 
-.user .usermail {
+.bounds .usermail {
   color: #8e8e8e;
   padding-left: 12px;
 }
 
-.user .add_user {
+.bounds .add_user {
   display: none;
   position: absolute;
   right: 16px;
@@ -116,23 +112,19 @@ input[type=text]:focus {
           transform: translateY(-50%);
 }
 
-.user .add_user path {
-  fill: rgba(255, 255, 255, 0.8);
-}
-
-.user:hover {
+.bounds:hover {
   background: #63a2ff;
 }
 
-.user:hover .username {
+.bounds:hover .username {
   color: white;
 }
 
-.user:hover .usermail {
+.bounds:hover .usermail {
   color: rgba(255, 255, 255, 0.64);
 }
 
-.user:hover .add_user {
+.bounds:hover .add_user {
   display: block;
 }
 
