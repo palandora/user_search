@@ -69,10 +69,6 @@ input[type=text]:focus {
   text-transform: uppercase;
 }
 
-.label::after {
-  content: " (2)";
-}
-
 .bounds {
   position: relative;
   display: -webkit-box;

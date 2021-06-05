@@ -1,4 +1,9 @@
-const containerUser = document.querySelector(".container_user");
+const containerUser = document.querySelector(".container_user")
+const labelMembers = document.querySelector("#counterMembers")
+const textInput = document.querySelector("input")
+let totalUsers
+console.log(textInput)
+
 const members = [{name:"Melanie Moshammer", mail:"m.moshammer@gmail.com", img:"melanie_moshammer.png"},
                 {name:"Stefan Freisinger", mail:"stefan.freisinger@gmail.de", img:"stefan_freisinger.png"},
                 {name:"Markus Stanzer", mail:"m.stanzer@outlook.de", img:"markus_stanzer.png"},
@@ -54,4 +59,18 @@ function importMembers(){
       });
 }
 
+function setLabel(){
+    const totalMembers = members.length
+    labelMembers.textContent = totalMembers
+}
+
+function filterMembers(){
+    textInput.addEventListener("input", (e)=>{
+        console.log(e.target.value)
+        //import only members who match the search criteria
+    })
+}
+
+filterMembers()
 importMembers()
+setLabel()

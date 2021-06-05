@@ -70,9 +70,6 @@ input[type=text]{
     padding: 12px 0 12px 16px;
     color: $col_light_grey;
     text-transform: uppercase;
-    &::after{
-        content: " (2)";
-    }
 }
 
 .bounds{
