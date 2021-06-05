@@ -1,8 +1,8 @@
 const containerUser = document.querySelector(".container_user")
 const labelMembers = document.querySelector("#counterMembers")
 const textInput = document.querySelector("input")
-let totalUsers
-console.log(textInput)
+
+let lastMatches = []
 
 const members = [{name:"Melanie Moshammer", mail:"m.moshammer@gmail.com", img:"melanie_moshammer.png"},
                 {name:"Stefan Freisinger", mail:"stefan.freisinger@gmail.de", img:"stefan_freisinger.png"},
@@ -53,24 +53,39 @@ function addMember(image,name,mail){
     return cell
 }
 
-function importMembers(){
-    members.forEach(function(member) {
-        containerUser.appendChild(addMember(member.img,member.name,member.mail))
+function importMembers(array){
+    array.forEach(function(user) {
+        containerUser.appendChild(addMember(user.img,user.name,user.mail))
       });
 }
 
-function setLabel(){
-    const totalMembers = members.length
-    labelMembers.textContent = totalMembers
+function removeLastMatches(){
+    const allMembers = document.querySelectorAll(".user")
+        allMembers.forEach((member)=>{
+            containerUser.removeChild(member)
+    })
 }
 
 function filterMembers(){
     textInput.addEventListener("input", (e)=>{
-        console.log(e.target.value)
-        //import only members who match the search criteria
+        removeLastMatches()
+        const searchTerm = e.target.value;
+        const matches = members.filter((member)=>{
+            return member.name.indexOf(`${searchTerm}`) > -1
+        })
+        importMembers(matches)
+        labelMembers.textContent = matches.length
     })
 }
 
+
+function selectMember(){
+
+}
+
+
+
+
+importMembers(members)
 filterMembers()
-importMembers()
-setLabel()
+
