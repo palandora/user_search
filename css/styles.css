@@ -73,6 +73,10 @@ input[type=text]:focus {
   content: " (2)";
 }
 
+.container_user {
+  border: 1px solid red;
+}
+
 .user {
   position: relative;
   display: -webkit-box;
