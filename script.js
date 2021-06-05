@@ -1,6 +1,7 @@
 const containerUser = document.querySelector(".container_user")
 const labelMembers = document.querySelector("#counterMembers")
 const textInput = document.querySelector("input")
+let addBtns = undefined
 
 let lastMatches = []
 
@@ -13,6 +14,7 @@ const members = [{name:"Melanie Moshammer", mail:"m.moshammer@gmail.com", img:"m
                 {name:"Alex Baumgartner", mail:"a.baumgartner@gmail.at", img:"alex_baumgartner.png"}]
 
 createMembers(members)
+labelMembers.textContent = members.length
 
 function createMembers(array){
     const htmlString = array.map(function(obj) {
@@ -29,6 +31,7 @@ function createMembers(array){
         `
       }).join('')
       containerUser.innerHTML = htmlString
+      addBtns = document.querySelectorAll(".user .add_user")
 }
 
 function filterMembers(){
@@ -42,7 +45,17 @@ function filterMembers(){
     })
 }
 
+function addMember(){
+    console.log("Member added")
+}
+
 filterMembers()
+addBtns.forEach(button => {
+    button.addEventListener("click",addMember) 
+});
+
+
+
 
 
 
