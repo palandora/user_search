@@ -2,6 +2,9 @@ const containerUser = document.querySelector(".container_user")
 const labelMembers = document.querySelector("#counterMembers")
 const textInput = document.querySelector("input")
 const container = document.querySelector(".container")
+const background = document.querySelector(".background_image")
+const footer = document.querySelector(".footer")
+const emptyState = document.querySelector(".empty_state")
 
 
 let lastMatches = []
@@ -32,8 +35,18 @@ function createMembers(array){
         `
       }).join('')
       containerUser.innerHTML = htmlString
-      
 }
+
+function setEmptyState(matches,word){
+    if(matches == 0){
+        emptyState.style.display = "block"
+        emptyState.querySelector(".inner").innerHTML = `Sorry unfortunately we could't find anyone called <span>${word}<span> 🥺`
+    }else{
+        emptyState.style.display = "none"
+    }
+}
+
+
 
 function filterMembers(){
     textInput.addEventListener("input", (e)=>{
@@ -41,8 +54,9 @@ function filterMembers(){
         const matches = members.filter((member)=>{
             return member.name.toLowerCase().includes(searchTerm)
         })
-        createMembers(matches)
         labelMembers.textContent = matches.length
+        createMembers(matches)
+        setEmptyState(matches.length,e.target.value)
     })
 }
 
@@ -51,12 +65,17 @@ function logMember(e){
     textInput.value = userClicked
     container.classList.add("selected")
     textInput.setAttribute("disabled","")
+    footer.textContent = "Not much going on here hmm? • Let's look for someone new 😍"
+    background.src = "assets/background_images/background_image_blured.jpg"
 }
 
 function deleteMember(){
     textInput.value = ""
     container.classList.remove("selected")
     textInput.removeAttribute("disabled")
+    createMembers(members)
+    footer.innerHTML = "Press <span>ESC</span> for canceling the search"
+    background.src = "assets/background_images/background_image.jpg"
 }
 
 filterMembers()
