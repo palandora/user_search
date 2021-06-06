@@ -38,7 +38,21 @@ body {
           box-shadow: 0 64px 64px rgba(0, 0, 0, 0.12), 0 64px 88px rgba(0, 0, 0, 0.32);
 }
 
-input[type=text] {
+.container.selected .container_user, .container.selected .label,
+.container.selected .divider.extended {
+  display: none;
+}
+
+.container.selected .delete_user {
+  display: block;
+}
+
+.wrapper_input {
+  position: relative;
+}
+
+.wrapper_input input[type=text] {
+  width: 100%;
   font-size: 14px;
   font-weight: 400;
   border-radius: 6px 6px 0 0;
@@ -46,9 +60,19 @@ input[type=text] {
   border: 0;
 }
 
-input[type=text]:focus {
+.wrapper_input input[type=text]:focus {
   caret-color: #63a2ff;
   outline: none;
+}
+
+.wrapper_input .delete_user {
+  cursor: pointer;
+  display: none;
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 .divider {

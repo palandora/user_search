@@ -37,21 +37,42 @@ body{
     border-radius: 6px;
     box-shadow: 0 64px 64px rgba(0,0,0,0.12),
     0 64px 88px rgba(0,0,0,0.32);
+    &.selected .container_user, &.selected .label,
+    &.selected .divider.extended{
+        display: none;
+    }
+    &.selected .delete_user{
+        display: block;
+    }
 }
 
-input[type=text]{
-    font: {
-        size: $size_reg;
-        weight: $weight_regular;
+.wrapper_input{
+    position: relative;
+    input[type=text]{
+        width: 100%;
+        font: {
+            size: $size_reg;
+            weight: $weight_regular;
+        }
+        border-radius: 6px 6px 0 0;
+        padding: 16px;
+        border: 0;
+        &:focus{
+            caret-color: $col_accent;
+            outline: none;
+        }
     }
-    border-radius: 6px 6px 0 0;
-    padding: 16px;
-    border: 0;
-    &:focus{
-        caret-color: $col_accent;
-        outline: none;
+    .delete_user{
+        cursor: pointer;
+        display: none;
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
     }
 }
+
+
 
 .divider{
     background:$col_seperator;

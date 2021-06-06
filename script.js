@@ -1,7 +1,8 @@
 const containerUser = document.querySelector(".container_user")
 const labelMembers = document.querySelector("#counterMembers")
 const textInput = document.querySelector("input")
-let addBtns = undefined
+const container = document.querySelector(".container")
+
 
 let lastMatches = []
 
@@ -31,7 +32,7 @@ function createMembers(array){
         `
       }).join('')
       containerUser.innerHTML = htmlString
-      addBtns = document.querySelectorAll(".user .add_user")
+      
 }
 
 function filterMembers(){
@@ -45,14 +46,32 @@ function filterMembers(){
     })
 }
 
-function addMember(){
-    console.log("Member added")
+function logMember(e){
+    const userClicked = e.path[1].childNodes[3].textContent
+    textInput.value = userClicked
+    container.classList.add("selected")
+    textInput.setAttribute("disabled","")
+}
+
+function deleteMember(){
+    textInput.value = ""
+    container.classList.remove("selected")
+    textInput.removeAttribute("disabled")
 }
 
 filterMembers()
-addBtns.forEach(button => {
-    button.addEventListener("click",addMember) 
-});
+
+document.addEventListener("click", (e)=>{
+    const current = e.target
+    if(current.matches('.user .add_user')){
+        logMember(e)
+    }else if(current.matches('.delete_user')){
+        deleteMember()
+    }else{
+        return
+    }
+})
+
 
 
 
