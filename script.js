@@ -17,8 +17,19 @@ const members = [{name:"Melanie Moshammer", mail:"m.moshammer@gmail.com", img:"m
                 {name:"Magdalena Nahatma", mail:"m.nahatma@outlook.de", img:"magdalena_nahatma.png"},
                 {name:"Alex Baumgartner", mail:"a.baumgartner@gmail.at", img:"alex_baumgartner.png"}]
 
-createMembers(members)
-labelMembers.textContent = members.length
+//Initializer functions
+
+
+function setUp(){
+    let displayStyleMatches = containerRecentMatches.style.display
+    console.log(recentMatches.length)
+    console.log(recentMatches)
+    recentMatches.length == 0 ? console.log(recentMatches.length) : console.log(recentMatches.length)
+    createMembers(members)
+    labelMembers.textContent = members.length
+}
+
+setUp()
 
 function createMembers(array){
     const htmlString = array.map(function(obj) {
@@ -86,12 +97,6 @@ function logMember(e){
     const userClicked = e.path[1].childNodes[3].textContent
     console.log(userClicked)
     pushToRecents(userClicked)
-    const match = members.find(function (member) {
-        return member.name.indexOf(userClicked) > -1;
-      });
-    console.log(match)
-
-
     textInput.value = userClicked
     container.classList.add("selected")
     textInput.setAttribute("disabled","")
@@ -120,6 +125,7 @@ document.addEventListener("click", (e)=>{
         return
     }
 })
+
 
 
 

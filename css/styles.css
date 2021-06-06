@@ -39,7 +39,7 @@ body {
 }
 
 .container.selected .container_user, .container.selected .label,
-.container.selected .divider.extended {
+.container.selected .divider.extended, .container.selected .container_recent_matches {
   display: none;
 }
 

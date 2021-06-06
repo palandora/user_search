@@ -38,7 +38,7 @@ body{
     box-shadow: 0 64px 64px rgba(0,0,0,0.12),
     0 64px 88px rgba(0,0,0,0.32);
     &.selected .container_user, &.selected .label,
-    &.selected .divider.extended{
+    &.selected .divider.extended, &.selected .container_recent_matches{
         display: none;
     }
     &.selected .delete_user{
