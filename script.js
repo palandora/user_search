@@ -5,9 +5,9 @@ const container = document.querySelector(".container")
 const background = document.querySelector(".background_image")
 const footer = document.querySelector(".footer")
 const emptyState = document.querySelector(".empty_state")
+const containerRecentMatches = document.querySelector(".container_recent_matches")
 
-
-let lastMatches = []
+let recentMatches = []
 
 const members = [{name:"Melanie Moshammer", mail:"m.moshammer@gmail.com", img:"melanie_moshammer.png"},
                 {name:"Stefan Freisinger", mail:"stefan.freisinger@gmail.de", img:"stefan_freisinger.png"},
@@ -46,7 +46,29 @@ function setEmptyState(matches,word){
     }
 }
 
-
+function pushToRecents(userClicked){
+    //find clicked Obj in Array
+    const match = members.find(function (member) {
+        return member.name.indexOf(userClicked) > -1;
+    });
+    //push Obj to recent array
+    recentMatches.push(match)
+    //convert clicked Objs to HTML
+   const htmlString = recentMatches.map(function(obj) {
+    return `
+        <div class="user">
+            <div class="bounds">
+                <img class="user_image" src="assets/thumbnails/${obj.img}">
+                <span class="username">${obj.name}</span>
+                <span class="usermail">${obj.mail}</span>
+                <img src="assets/icons/ic_next.svg" class="add_user">
+            </div>
+            <div class="divider"></div>
+        </div>
+    `
+     }).join('')
+     containerRecentMatches.querySelector(".recent_matches").innerHTML = htmlString
+}
 
 function filterMembers(){
     textInput.addEventListener("input", (e)=>{
@@ -62,6 +84,14 @@ function filterMembers(){
 
 function logMember(e){
     const userClicked = e.path[1].childNodes[3].textContent
+    console.log(userClicked)
+    pushToRecents(userClicked)
+    const match = members.find(function (member) {
+        return member.name.indexOf(userClicked) > -1;
+      });
+    console.log(match)
+
+
     textInput.value = userClicked
     container.classList.add("selected")
     textInput.setAttribute("disabled","")
@@ -90,7 +120,6 @@ document.addEventListener("click", (e)=>{
         return
     }
 })
-
 
 
 
